@@ -11,7 +11,9 @@ api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
     raise ValueError("API key not found. Please set the OPENAI_API_KEY environment variable.")
 
-client = OpenAI(api_key=api_key)
+client = OpenAI(
+     base_url = 'http://localhost:11434/v1',
+     api_key='ollama')
 
 def call_openai_api():
     print("~~~STARTING call_openai_api~~~")
@@ -78,7 +80,7 @@ def call_openai_api():
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="llama3",
             messages=[
                 {
                     "role": "system",
