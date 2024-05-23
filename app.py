@@ -1,6 +1,4 @@
 import warnings
-warnings.filterwarnings("ignore")
-
 import os
 import time
 from dotenv import load_dotenv
@@ -10,8 +8,11 @@ import extracts  # Import extracts module
 import trimmer
 import subtitler
 
+warnings.filterwarnings("ignore")
+
 # Load environment variables
 load_dotenv()
+
 
 def file_ready(filename):
     """Check if the file is ready by attempting to append to it."""
@@ -20,6 +21,7 @@ def file_ready(filename):
             return True
     except IOError:
         return False
+
 
 def wait_for_file(filename, timeout=30):
     """Wait for a file to be fully written and ready."""
@@ -30,6 +32,7 @@ def wait_for_file(filename, timeout=30):
         time.sleep(1)
     return False
 
+
 def wait_for_file_existence(filepath, timeout=30):
     """Wait for a file to be created and exist."""
     start_time = time.time()
@@ -38,6 +41,7 @@ def wait_for_file_existence(filepath, timeout=30):
             return True
         time.sleep(1)
     return False
+
 
 def process_subtitles(input_video_path, subtitle_file, output_video_folder):
     """Process a single subtitle file to create a trimmed and subtitled video."""
@@ -57,6 +61,7 @@ def process_subtitles(input_video_path, subtitle_file, output_video_folder):
     subtitler.process_video_and_subtitles(trimmed_video_path, subtitle_file, 'subtitler_output')
 
     print(f"Video processed and saved to {subtitled_video_path}")
+
 
 def main():
     input_folder = 'input_files'
@@ -97,6 +102,7 @@ def main():
                         process_subtitles(input_video_path, subtitle_file_path, output_video_folder)
             else:
                 print(f"Failed to verify the readiness of subtitles file: {initial_srt_path}")
+
 
 if __name__ == "__main__":
     main()
