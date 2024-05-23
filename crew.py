@@ -1,4 +1,3 @@
-import os
 from getpass import getpass
 from crewai import Agent, Task, Crew, Process
 from crewai.tasks.task_output import TaskOutput
@@ -7,19 +6,16 @@ from textwrap import dedent
 from langchain_community.chat_models import ChatOpenAI
 from langchain_community.chat_models import ChatOllama
 from langchain_community.llms import Ollama
-import datetime
 from langchain_anthropic import ChatAnthropic
 from dotenv import load_dotenv
-import glob
 from datetime import datetime
 from typing import List
-import json
-import sys
-import os
+import json, sys, os, glob, datetime
 import extracts  # Ensure this module is available and correctly imported
 
 # Add API keys within `./.env` file
 load_dotenv()
+
 
 def main(extracts, subtitles):
 
@@ -67,7 +63,7 @@ def main(extracts, subtitles):
         verbose=True,
         max_iter=1,
         max_rpm=1,
-        llm = ChatOllama(model="llama3")
+        llm=ChatOllama(model="llama3")
         # llm=ChatOpenAI(model_name="gpt-4", temperature=0.5)
         # ↑ uncomment to use OpenAI API + "gpt-4"
         # llm=ChatAnthropic(model='claude-3-opus-20240229', temperature=0.5),
@@ -91,7 +87,7 @@ def main(extracts, subtitles):
         verbose=True,
         max_iter=1,
         max_rpm=1,
-        llm = ChatOllama(model="llama3")
+        llm=ChatOllama(model="llama3")
         # llm=ChatOpenAI(model_name="gpt-4", temperature=0.5)
         # ↑ uncomment to use OpenAI API + "gpt-4"
         # llm=ChatAnthropic(model='claude-3-opus-20240229', temperature=0.5),
@@ -329,6 +325,7 @@ def main(extracts, subtitles):
     print(result)
 
     return result
+
 
 if __name__ == "__main__":
 
