@@ -5,7 +5,6 @@ from send2trash import send2trash
 def move_files_to_trash(directory, exclude_files=None):
     """
     Move all files and directories in the specified directory to trash, optionally excluding some files.
-    
     :param directory: The directory from which to move files and directories to trash.
     :param exclude_files: A list of filenames to exclude from moving to trash.
     """
@@ -30,7 +29,6 @@ def move_files_to_trash(directory, exclude_files=None):
 def clear_file_contents(file_path):
     """
     Clear the contents of the specified file.
-    
     :param file_path: The path to the file to clear.
     """
     with open(file_path, 'w') as file:

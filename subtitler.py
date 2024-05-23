@@ -1,4 +1,8 @@
-import os, ffmpeg, glob, subprocess, re, datetime
+import os
+import glob
+import subprocess
+import re
+import datetime
 
 
 def adjust_subtitle_timing(subtitle_path, output_path):
@@ -64,7 +68,7 @@ def burn_subtitles(video_path, subtitle_path, output_video_path):
         '-c:a', 'copy',
         output_video_path
     ]
-    
+
     try:
         subprocess.run(cmd, check=True)
         print(f"Subtitles have been burned into the video: {output_video_path}")
