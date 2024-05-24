@@ -14,7 +14,6 @@ import json
 import sys
 import os
 import glob
-import datetime
 import extracts  # Ensure this module is available and correctly imported
 
 # Add API keys within `./.env` file
@@ -41,8 +40,9 @@ def main(extracts, subtitles):
             """)),
         allow_delegation=False,
         verbose=True,
-        max_iter=1,
+        max_iter=3,
         max_rpm=1,
+        max_execution_time=600,
         llm = ChatOllama(model="llama3")
         # llm=ChatOpenAI(model_name="gpt-4", temperature=0.5)
         # ↑ uncomment to use OpenAI API + "gpt-4"
@@ -65,8 +65,9 @@ def main(extracts, subtitles):
             """)),
         allow_delegation=False,
         verbose=True,
-        max_iter=1,
+        max_iter=3,
         max_rpm=1,
+        max_execution_time=600,
         llm=ChatOllama(model="llama3")
         # llm=ChatOpenAI(model_name="gpt-4", temperature=0.5)
         # ↑ uncomment to use OpenAI API + "gpt-4"
@@ -89,8 +90,9 @@ def main(extracts, subtitles):
             """)),
         allow_delegation=False,
         verbose=True,
-        max_iter=1,
+        max_iter=3,
         max_rpm=1,
+        max_execution_time=600,
         llm=ChatOllama(model="llama3")
         # llm=ChatOpenAI(model_name="gpt-4", temperature=0.5)
         # ↑ uncomment to use OpenAI API + "gpt-4"
