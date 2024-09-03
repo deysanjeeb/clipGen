@@ -15,9 +15,11 @@ import sys
 import os
 import glob
 import extracts  # Ensure this module is available and correctly imported
+from groq import Groq
 
 # Add API keys within `./.env` file
 load_dotenv()
+api_key = os.getenv('GROQ_API_KEY')
 
 
 def main(extracts, subtitles):
@@ -43,7 +45,9 @@ def main(extracts, subtitles):
         max_iter=3,
         max_rpm=1,
         max_execution_time=600,
-        llm = ChatOllama(model="llama3")
+        llm = Groq(api_key=api_key)
+
+        # llm = ChatOllama(model="llama3")
         # llm=ChatOpenAI(model_name="gpt-4", temperature=0.5)
         # ↑ uncomment to use OpenAI API + "gpt-4"
         # llm=ChatAnthropic(model='claude-3-opus-20240229', temperature=0.5),
@@ -68,7 +72,9 @@ def main(extracts, subtitles):
         max_iter=3,
         max_rpm=1,
         max_execution_time=600,
-        llm=ChatOllama(model="llama3")
+        llm = Groq(api_key=api_key)
+
+        # llm=ChatOllama(model="llama3")
         # llm=ChatOpenAI(model_name="gpt-4", temperature=0.5)
         # ↑ uncomment to use OpenAI API + "gpt-4"
         # llm=ChatAnthropic(model='claude-3-opus-20240229', temperature=0.5),
@@ -93,7 +99,9 @@ def main(extracts, subtitles):
         max_iter=3,
         max_rpm=1,
         max_execution_time=600,
-        llm=ChatOllama(model="llama3")
+        # llm=ChatOllama(model="llama3")
+        llm = Groq(api_key=api_key)
+
         # llm=ChatOpenAI(model_name="gpt-4", temperature=0.5)
         # ↑ uncomment to use OpenAI API + "gpt-4"
         # llm=ChatAnthropic(model='claude-3-opus-20240229', temperature=0.5),

@@ -4,16 +4,15 @@ import os
 from openai import OpenAI
 from textwrap import dedent
 from dotenv import load_dotenv
+from groq import Groq
 
 load_dotenv()
 
-api_key = os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("GROQ_API_KEY")
 if not api_key:
-    raise ValueError("API key not found. Please set the OPENAI_API_KEY environment variable.")
+    raise ValueError("API key not found. Please set the GROQ_API_KEY environment variable.")
 
-client = OpenAI(
-    base_url='http://localhost:11434/v1',
-    api_key='ollama')
+client = Groq(api_key=api_key)
 
 
 def call_openai_api():
@@ -81,7 +80,7 @@ def call_openai_api():
 
     try:
         response = client.chat.completions.create(
-            model="llama3",
+            model="llama3-8b-8192",
             messages=[
                 {
                     "role": "system",
